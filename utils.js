@@ -21,6 +21,9 @@ const whatTypeDis = string => {
 };
 
 const lineToObject = line => {
+  /**
+   * I need to also pass in a lastHeader value and add it....
+   */
   let text = line.slice(1).trim();
   return {
     text: text,
@@ -31,5 +34,8 @@ const lineToObject = line => {
 const emptyItems = item => item.text;
 
 exports.parseKanban = string => {
-  return string.split('\n').map(lineToObject).filter(emptyItems);
+  let parse = string.split('\n').map(lineToObject).filter(emptyItems);
+  //let headers = parse.filter(item => item.type === 'header');
+  //let items = parse.filter(item => item.type === 'items');
+  //return headers;
 };
