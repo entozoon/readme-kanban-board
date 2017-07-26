@@ -9,3 +9,27 @@ exports.stripKanban = string => {
   }
   return false;
 };
+
+const whatTypeDis = string => {
+  switch (string.slice(0, 1)) {
+    case '-':
+      return 'item';
+    case '#':
+      return 'header';
+  }
+  return false;
+};
+
+const lineToObject = line => {
+  let text = line.slice(1).trim();
+  return {
+    text: text,
+    type: whatTypeDis(line)
+  };
+};
+
+const emptyItems = item => item.text;
+
+exports.parseKanban = string => {
+  return string.split('\n').map(lineToObject).filter(emptyItems);
+};

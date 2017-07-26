@@ -19,5 +19,8 @@ KANBAN--->
 Ignore this too
 `;
 
-let kanban = utils.stripKanban(readme);
-console.log(kanban);
+// I know I can write this better, erggh
+let kanban = utils.stripKanban(readme),
+  kanbanParsed = utils.parseKanban(kanban);
+
+console.log(kanbanParsed);
