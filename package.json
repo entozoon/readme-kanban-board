@@ -1,0 +1,22 @@
+{
+  "name": "readme-kanban-board",
+  "version": "0.0.1",
+  "description": "Write a markdown based kanban board and have it converted to a nice image in your readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/entozoon/readme-kanban-board.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/entozoon/readme-kanban-board/issues"
+  },
+  "homepage": "https://github.com/entozoon/readme-kanban-board#readme",
+  "dependencies": {
+    "imgur": "^0.2.1"
+  }
+}
