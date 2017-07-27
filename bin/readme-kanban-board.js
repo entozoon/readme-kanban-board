@@ -70,13 +70,15 @@ Promise.all([promisedCSS, promisedMD])
         siteType: 'html',
         customCSS: css,
         screenSize: {
-          width: 888
+          width: 888,
+          height: 400 // Not sure it's possible to anticipate this!
         },
         shotSize: {
-          width: 888,
-          height: 'all'
+          width: 'window',
+          height: 'window'
         },
-        quality: 100
+        quality: 100,
+        streamType: 'png'
       },
       err => {
         if (debugging) {
