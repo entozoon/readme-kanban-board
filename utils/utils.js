@@ -3,11 +3,26 @@ let alpha = '<!---KANBAN',
   omega = 'KANBAN--->';
 
 exports.stripKanban = string => {
-  (start = string.indexOf(alpha)), (end = string.indexOf(omega));
-  if (start >= 0 && end > 0) {
-    return string.slice(start + alpha.length, end).trim();
-  }
-  return false;
+  // ERGH THIS PARSES THE CODEBLOCKSzzz
+  // (start = string.indexOf(alpha)), (end = string.indexOf(omega));
+  // if (start >= 0 && end > 0) {
+  //   return string.slice(start + alpha.length, end);
+  // }
+
+  // Rewriting by way of splitting by line to find only '\n<!-- ..'
+  let kanban = string.split('\n'),
+    withinKanban = false,
+    foundKanban = false;
+  kanban = kanban.filter(line => {
+    if (line.substring(0, alpha.length) == alpha || line.substring(0, omega.length) == omega) {
+      foundKanban = true;
+      withinKanban = !withinKanban;
+    }
+    return withinKanban;
+  });
+
+  // Don't need the first line, as that'll be alpha
+  return foundKanban ? kanban.splice(1).join('\n') : false;
 };
 
 const whatTypeDis = string => {

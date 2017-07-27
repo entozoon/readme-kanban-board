@@ -15,7 +15,6 @@ body {
 
 .kanban {
   position: relative;
-  overflow: hidden;
 }
 .col {
   display: inline-block;

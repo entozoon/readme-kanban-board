@@ -48,6 +48,8 @@ Promise.all([promisedCSS, promisedMD])
     // Grab the <!---KANBAN KANBAN---> chunk
     let kanban = utils.stripKanban(md);
 
+    console.log(kanban);
+
     if (!kanban) {
       console.log(
         "Oops, I couldn't find a README.md file in the root of your project,\nthat also contains a <!---KANBAN KANBAN---> section. Please read:\nhttps://github.com/entozoon/readme-kanban-board"
@@ -57,6 +59,11 @@ Promise.all([promisedCSS, promisedMD])
 
     // Parse the heck out of it
     let kanbanParsed = utils.parseKanban(kanban);
+
+    if (!Object.keys(kanbanParsed).length) {
+      console.log('Oops, something went wrong trying to parse your kanban markdown!');
+      return;
+    }
 
     // Create HTML
     let kanbanHtml = utils.kanbanToHTML(kanbanParsed);
