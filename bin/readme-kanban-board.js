@@ -1,5 +1,5 @@
-// https://github.com/kaimallea/node-imgur
-let imgur = require('imgur');
+#! /usr/bin/env node
+let imgur = require('imgur'); // https://github.com/kaimallea/node-imgur
 let webshot = require('webshot');
 let fs = require('fs');
 let utils = require('../utils/utils');
