@@ -3,14 +3,27 @@ let webshot = require('webshot');
 let fs = require('fs');
 let utils = require('../utils/utils');
 
-let debugging = false;
+console.log(' -- Readme Kanban Board --');
+
+// During dev of the module, enable debugging by running with
+//   npm run dev
+// But to run it in a way that generates the 'Example' in the module readme itself, run
+//   npm run build
+//
+let debugging = false,
+  useModuleReadme = false;
+
+// Enable debugging mode if run with `npm run dev`, i.e. `node bin/readme-kanban-board debugging`
+process.argv.forEach(function(value, index, array) {
+  if (value == 'debugging') debugging = true;
+  if (value == 'useModuleReadme') useModuleReadme = true;
+});
 
 let pathRoot = './',
   pathModule = debugging ? './' : 'node_modules/readme-kanban-board/',
   pathGenImage = pathRoot + '../gen/kanban.png',
-  pathReadme = debugging ? pathModule + 'test/README.md' : pathRoot + 'README.md';
-
-console.log(' -- Readme Kanban Board --');
+  pathReadme =
+    debugging && !useModuleReadme ? pathModule + 'test/README.md' : pathRoot + 'README.md';
 
 // fs.readFile function with a legit Promise wrapper
 const getFile = (fileName, type) =>
@@ -59,8 +72,8 @@ Promise.all([promisedCSS, promisedMD])
       },
       err => {
         if (debugging) {
-          console.log('Stopping for debugging');
-          return;
+          //console.log('Stopping for debugging');
+          //return;
         }
         if (err) {
           console.log(err);

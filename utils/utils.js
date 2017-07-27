@@ -84,6 +84,7 @@ exports.addImageToMarkdown = (url, md) => {
   let imageLink = '![created by readme-kanban-board](' + url + ')';
   let jam = md.split('\n');
   // Replace an existing image link, or add
+  console.log(jam);
   jam = jam
     .map((line, i) => {
       if (line.substring(0, alpha.length) == alpha) {
@@ -97,5 +98,6 @@ exports.addImageToMarkdown = (url, md) => {
       return line;
     })
     .join('\n');
+  console.log(jam);
   return jam;
 };

@@ -4,6 +4,7 @@ Write a markdown based kanban board in your **README.md** and have it converted 
 
 ## Example
 
+![created by readme-kanban-board](http://i.imgur.com/U5lrvP1.png)
 <!---KANBAN
 # Doing
 - This thing
