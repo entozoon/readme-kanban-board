@@ -78,11 +78,11 @@ Promise.all([promisedCSS, promisedMD])
         customCSS: css,
         screenSize: {
           width: 888,
-          height: 400 // Not sure it's possible to anticipate this!
+          height: 10 // Overflows over this! woop!
         },
         shotSize: {
-          width: 'window',
-          height: 'window'
+          width: 'all',
+          height: 'all'
         },
         quality: 100,
         streamType: 'png'
