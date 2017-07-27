@@ -2,7 +2,7 @@
 let imgur = require('imgur');
 let webshot = require('webshot');
 let fs = require('fs');
-let utils = require('./utils');
+let utils = require('../utils/utils');
 
 let stopImgurUpload = true; // debugging
 let genImageUrl = '../gen/kanban.png';
