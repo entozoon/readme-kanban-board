@@ -50,7 +50,7 @@ Promise.all([promisedCSS, promisedMD])
 
     if (!kanban) {
       console.log(
-        "Oops, I couldn't find a README.md file in the root of your project,\nthat also contains a <!---KANBAN KANBAN---> section. Please read:\nhttps://github.com/entozoon/readme-kanban-board#kanban-markdown-formatting"
+        "Oops, I couldn't find a README.md file in the root of your project,\nthat also contains a <!---KANBAN KANBAN---> section. Please read:\nhttps://github.com/entozoon/readme-kanban-board"
       );
       return;
     }

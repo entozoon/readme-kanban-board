@@ -4,6 +4,19 @@ Write a markdown based kanban board in your **README.md** and have it converted 
 
 ## Example
 
+In your **README.md**, simply have a commented section like this, in the format:
+
+    <!---KANBAN
+    # Doing
+    - This thing
+
+    # Done
+    - That thing
+    - Another thing
+    KANBAN--->
+
+Which generates:
+
 ![created by readme-kanban-board](http://i.imgur.com/aVHnv0g.jpg)
 <!---KANBAN
 # Doing
@@ -29,17 +42,3 @@ Add it to package.json scripts, similar to:
 Then fire it up by running:
 
     npm run readme-kanban-board
-
-
-## Kanban Markdown Formatting
-
-In your **readme.md**, simply have a commented section in this format:
-
-    <!---KANBAN
-    # Doing
-    - This thing
-
-    # Done
-    - That thing
-    - Another thing
-    KANBAN--->
