@@ -5,6 +5,7 @@ let fs = require('fs');
 let utils = require('./utils');
 
 let stopImgurUpload = true; // debugging
+let genImageUrl = '../gen/kanban.png';
 
 // fs.readFile function with a legit Promise wrapper
 const getFile = (fileName, type) =>
@@ -15,8 +16,8 @@ const getFile = (fileName, type) =>
   });
 
 // Get all the local files
-let promisedCSS = getFile('./style.css', 'utf8');
-let promisedMD = getFile('./test.md', 'utf8');
+let promisedCSS = getFile('./css/style.css', 'utf8');
+let promisedMD = getFile('./test/README.md', 'utf8');
 
 // When they're loaded, crack on with parsing everything
 Promise.all([promisedCSS, promisedMD])
@@ -39,7 +40,7 @@ Promise.all([promisedCSS, promisedMD])
     // We have to physically save the file to disk, as webshot doesn't handle it another way (despite docs)
     let renderStream = webshot(
       kanbanHtml,
-      './kanban.png', // image created locally
+      genImageUrl, // image created locally
       {
         siteType: 'html',
         customCSS: css
@@ -54,10 +55,10 @@ Promise.all([promisedCSS, promisedMD])
           return;
         }
         // Sweet, so the image was created. Let's sploodge it up to imgur
-        fs.readFile('./kanban.png', function read(err, data) {
+        fs.readFile(genImageUrl, function read(err, data) {
           console.log('Uploading to imgur..');
           imgur
-            .uploadFile('./kanban.png')
+            .uploadFile(genImageUrl)
             .then(json => {
               console.log(json.data.link);
             })
