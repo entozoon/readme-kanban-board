@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/entozoon/readme-kanban-board#readme",
   "dependencies": {
-    "imgur": "^0.2.1"
+    "imgur": "^0.2.1",
+    "webshot": "^0.18.0"
   }
 }
