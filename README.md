@@ -7,24 +7,34 @@ Write a markdown based kanban board in your **README.md** and have it converted 
 In your **README.md**, simply have a commented section like this, in the format:
 
     <!---KANBAN
-    # Doing
-    - This thing
+    # To Do
+    - Eat healthy food
+    - Exercise regularly
+    - Learn sign language
+
+    # In Progress
+    - Drink too much
 
     # Done
-    - That thing
-    - Another thing
+    - Regret my decisions
+    - Age too quickly
     KANBAN--->
 
 Which generates:
 
-![created by readme-kanban-board](http://i.imgur.com/aFBhEVg.png)
+![created by readme-kanban-board](http://i.imgur.com/OXBxPqB.png)
 <!---KANBAN
-# Doing
-- This thing
+# To Do
+- Eat healthy food
+- Exercise regularly
+- Learn sign language
+
+# In Progress
+- Drink too much
 
 # Done
-- That thing
-- Another thing
+- Regret my decisions
+- Age too quickly
 KANBAN--->
 
 ## Install
