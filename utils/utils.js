@@ -68,15 +68,21 @@ exports.parseKanban = string => {
 
 // It's almost like I'm writing code for the sake of writing code at this point
 exports.kanbanToHTML = kanban => {
-  let html = '';
+  let html = '<div class="kanban">';
   for (let key in kanban) {
+    html += '<div class="col col--' + Object.keys(kanban).length + '">';
+    html += '<div class="list">';
     html += '<h3>' + key + '</h3>';
     html += '<ul>';
     kanban[key].forEach(item => {
       html += '<li>' + item.text + '</li>';
     });
     html += '</ul>';
+    html += '</div>';
+    html += '</div>';
   }
+  html += '</div>';
+  //console.log(html);
   return html;
 };
 
@@ -84,7 +90,6 @@ exports.addImageToMarkdown = (url, md) => {
   let imageLink = '![created by readme-kanban-board](' + url + ')';
   let jam = md.split('\n');
   // Replace an existing image link, or add
-  console.log(jam);
   jam = jam
     .map((line, i) => {
       if (line.substring(0, alpha.length) == alpha) {
@@ -98,6 +103,5 @@ exports.addImageToMarkdown = (url, md) => {
       return line;
     })
     .join('\n');
-  console.log(jam);
   return jam;
 };

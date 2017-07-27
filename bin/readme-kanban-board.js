@@ -21,7 +21,7 @@ process.argv.forEach(function(value, index, array) {
 
 let pathRoot = './',
   pathModule = debugging ? './' : 'node_modules/readme-kanban-board/',
-  pathGenImage = pathRoot + '../gen/kanban.png',
+  pathGenImage = pathModule + 'gen/kanban.png',
   pathReadme =
     debugging && !useModuleReadme ? pathModule + 'test/README.md' : pathRoot + 'README.md';
 
@@ -68,7 +68,15 @@ Promise.all([promisedCSS, promisedMD])
       pathGenImage, // image created locally
       {
         siteType: 'html',
-        customCSS: css
+        customCSS: css,
+        screenSize: {
+          width: 888
+        },
+        shotSize: {
+          width: 888,
+          height: 'all'
+        },
+        quality: 100
       },
       err => {
         if (debugging) {
