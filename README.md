@@ -17,7 +17,7 @@ In your **README.md**, simply have a commented section like this, in the format:
 
 Which generates:
 
-![created by readme-kanban-board](http://i.imgur.com/aVHnv0g.jpg)
+![created by readme-kanban-board](http://i.imgur.com/ajxs7fI.jpg)
 <!---KANBAN
 # Doing
 - This thing
