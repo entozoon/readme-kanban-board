@@ -1,11 +1,11 @@
 // Strip out the kanban stuff
+let alpha = '<!---KANBAN',
+  omega = 'KANBAN--->';
+
 exports.stripKanban = string => {
-  let a = '<!---KANBAN',
-    b = 'KANBAN--->',
-    start = string.indexOf(a),
-    end = string.indexOf(b);
+  (start = string.indexOf(alpha)), (end = string.indexOf(omega));
   if (start >= 0 && end > 0) {
-    return string.slice(start + a.length, end).trim();
+    return string.slice(start + alpha.length, end).trim();
   }
   return false;
 };
@@ -78,4 +78,24 @@ exports.kanbanToHTML = kanban => {
     html += '</ul>';
   }
   return html;
+};
+
+exports.addImageToMarkdown = (url, md) => {
+  let imageLink = '![created by readme-kanban-board](' + url + ')';
+  let jam = md.split('\n');
+  // Replace an existing image link, or add
+  jam = jam
+    .map((line, i) => {
+      if (line.substring(0, alpha.length) == alpha) {
+        // Ergh, this is so dodgy..
+        if (jam[i - 1].substring(0, 2) == '![') {
+          jam[i - 1] = imageLink;
+        } else {
+          line = imageLink + '\n' + line;
+        }
+      }
+      return line;
+    })
+    .join('\n');
+  return jam;
 };

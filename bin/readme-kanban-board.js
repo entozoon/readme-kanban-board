@@ -73,6 +73,10 @@ Promise.all([promisedCSS, promisedMD])
             .uploadFile(pathGenImage)
             .then(json => {
               console.log(json.data.link);
+              // Bosh it into the README.md
+              md = utils.addImageToMarkdown(json.data.link, md);
+              fs.writeFile(pathReadme, md);
+              console.log('README.md updated with your kanban image!');
             })
             .catch(err => {
               console.error(err.message);

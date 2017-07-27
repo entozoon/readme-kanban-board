@@ -2,6 +2,17 @@
 
 Write a markdown based kanban board in your **README.md** and have it converted to an image and injected in.
 
+## Example
+
+<!---KANBAN
+# Doing
+- This thing
+
+# Done
+- That thing
+- Another thing
+KANBAN--->
+
 ## Install
 
     npm i readme-kanban-board
