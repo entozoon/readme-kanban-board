@@ -42,3 +42,12 @@ Add it to package.json scripts, similar to:
 Then fire it up by running:
 
     npm run readme-kanban-board
+
+## Yes that's all well and good, but what does it actually _do_?
+
+- Finds kanban code in your README.md file
+- Parses it up
+- Generates a kanban board of it with HTML/CSS
+- Creates a screenshot of said HTML
+- Uploads that image to imgur
+- Injects/updates an image link in your README.md
