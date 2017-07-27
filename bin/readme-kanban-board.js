@@ -3,8 +3,11 @@ let webshot = require('webshot');
 let fs = require('fs');
 let utils = require('../utils/utils');
 
-let stopImgurUpload = true; // debugging
-let genImageUrl = '../gen/kanban.png';
+let debugging = false;
+
+let cd = debugging ? './' : 'node_modules/readme-kanban-board/';
+
+let genImageUrl = cd + '../gen/kanban.png';
 
 // fs.readFile function with a legit Promise wrapper
 const getFile = (fileName, type) =>
@@ -15,8 +18,8 @@ const getFile = (fileName, type) =>
   });
 
 // Get all the local files
-let promisedCSS = getFile('./css/style.css', 'utf8');
-let promisedMD = getFile('./test/README.md', 'utf8');
+let promisedCSS = getFile(cd + 'css/style.css', 'utf8');
+let promisedMD = getFile(cd + 'test/README.md', 'utf8');
 
 // When they're loaded, crack on with parsing everything
 Promise.all([promisedCSS, promisedMD])
@@ -45,7 +48,7 @@ Promise.all([promisedCSS, promisedMD])
         customCSS: css
       },
       err => {
-        if (stopImgurUpload) {
+        if (debugging) {
           console.log('Stopping for debugging');
           return;
         }

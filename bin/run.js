@@ -1,3 +1,4 @@
 #! /usr/bin/env node
 var shell = require('shelljs');
-shell.exec('node readme-kanban-board.js');
+var cd = 'node_modules/readme-kanban-board/bin/';
+shell.exec('node ' + cd + 'readme-kanban-board.js');

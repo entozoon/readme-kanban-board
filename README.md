@@ -1,15 +1,22 @@
 # Readme Kanban Board
 
-Write a markdown based kanban board and have it converted to a nice image in your readme.md
+Write a markdown based kanban board in your **README.md** and have it converted to an image and injected in.
 
 ## Install
 
-   npm i readme-kanban-board
+    npm i readme-kanban-board
 
 ## Usage
 
-    node node_modules/erm/i/need/to/think/about/this
-    maybe i -g is the way to go
+Add it to package.json scripts, similar to:
+
+    "scripts": {
+      "readme-kanban-board": "readme-kanban-board"
+    }
+
+Then fire it up by running:
+
+    npm run readme-kanban-board
 
 
 ## Kanban Markdown Formatting
