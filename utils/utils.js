@@ -88,20 +88,23 @@ exports.kanbanToHTML = kanban => {
 
 exports.addImageToMarkdown = (url, md) => {
   let imageLink = '![created by readme-kanban-board](' + url + ')';
+  let replaceIndex = null;
   let jam = md.split('\n');
   // Replace an existing image link, or add
-  jam = jam
-    .map((line, i) => {
-      if (line.substring(0, alpha.length) == alpha) {
-        // Ergh, this is so dodgy..
-        if (jam[i - 1].substring(0, 2) == '![') {
-          jam[i - 1] = imageLink;
-        } else {
-          line = imageLink + '\n' + line;
-        }
+  jam = jam.map((line, i) => {
+    if (line.substring(0, alpha.length) == alpha) {
+      // Ergh, this is so dodgy..
+      if (jam[i - 1].substring(0, 2) == '![') {
+        replaceIndex = i - 1;
+      } else {
+        line = imageLink + '\n' + line;
       }
-      return line;
-    })
-    .join('\n');
-  return jam;
+    }
+    return line;
+  });
+  // Giving up at this point
+  if (replaceIndex) {
+    jam[replaceIndex] = imageLink;
+  }
+  return jam.join('\n');
 };

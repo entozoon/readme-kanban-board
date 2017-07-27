@@ -1,6 +1,6 @@
 {
   "name": "readme-kanban-board",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "Write a markdown based kanban board and have it converted to a nice image in your readme",
   "main": "bin/readme-kanban-board.js",
   "scripts": {
