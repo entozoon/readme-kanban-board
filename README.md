@@ -59,5 +59,13 @@ Then fire it up by running:
 - Parses it up
 - Generates a kanban board of it with HTML/CSS
 - Creates a screenshot of said HTML
-- Uploads that image to imgur
+- Saves the image to repo / uploads to imgur (optional)
 - Injects/updates an image link in your README.md
+
+## Extra options
+
+Add an `imgur` flag if you wish for the generated kanban image to be hosted externally, on imgur:
+
+    "scripts": {
+      "readme-kanban-board": "readme-kanban-board imgur"
+    }

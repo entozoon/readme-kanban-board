@@ -11,17 +11,19 @@ console.log(' -- Readme Kanban Board --');
 //   npm run build
 //
 let debugging = false,
-  useModuleReadme = false;
+  useModuleReadme = false,
+  useImgur = false;
 
 // Enable debugging mode if run with `npm run dev`, i.e. `node bin/readme-kanban-board debugging`
 process.argv.forEach(function(value, index, array) {
   if (value == 'debugging') debugging = true;
   if (value == 'useModuleReadme') useModuleReadme = true;
+  if (value == 'imgur') useImgur = true;
 });
 
 let pathRoot = './',
   pathModule = debugging ? './' : 'node_modules/readme-kanban-board/',
-  pathGenImage = pathModule + 'gen/kanban.png',
+  pathGenImage = useImgur ? pathModule + 'gen/kanban.png' : pathRoot + 'kanban.png',
   pathReadme =
     debugging && !useModuleReadme ? pathModule + 'test/README.md' : pathRoot + 'README.md';
 
@@ -97,21 +99,28 @@ Promise.all([promisedCSS, promisedMD])
           return;
         }
         // Sweet, so the image was created. Let's sploodge it up to imgur
-        fs.readFile(pathGenImage, function read(err, data) {
-          console.log('Uploading to imgur..');
-          imgur
-            .uploadFile(pathGenImage)
-            .then(json => {
-              console.log(json.data.link);
-              // Bosh it into the README.md
-              md = utils.addImageToMarkdown(json.data.link, md);
-              fs.writeFile(pathReadme, md);
-              console.log('README.md updated with your kanban image!');
-            })
-            .catch(err => {
-              console.error(err.message);
-            });
-        });
+        if (useImgur) {
+          fs.readFile(pathGenImage, function read(err, data) {
+            console.log('Uploading to imgur..');
+            imgur
+              .uploadFile(pathGenImage)
+              .then(json => {
+                console.log(json.data.link);
+                // Bosh it into the README.md
+                md = utils.addImageToMarkdown(json.data.link, md);
+                fs.writeFile(pathReadme, md);
+                console.log('README.md updated with your kanban image!');
+              })
+              .catch(err => {
+                console.error(err.message);
+              });
+          });
+        } else {
+          // Bosh it into the README.md
+          md = utils.addImageToMarkdown(pathGenImage, md);
+          fs.writeFile(pathReadme, md);
+          console.log('README.md updated with your kanban image!');
+        }
       }
     );
   });
