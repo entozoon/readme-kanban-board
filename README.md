@@ -39,7 +39,7 @@ KANBAN--->
 
 ## Install
 
-    npm i readme-kanban-board
+    npm i --save-dev readme-kanban-board
 
 ## Usage
 
