@@ -22,7 +22,8 @@ In your **README.md**, simply have a commented section like this, in the format:
 
 Which generates:
 
-![created by readme-kanban-board](http://i.imgur.com/OXBxPqB.png)
+![created by readme-kanban-board](./kanban.png)
+
 <!---KANBAN
 # To Do
 - Eat healthy food
@@ -55,12 +56,12 @@ Then fire it up by running:
 
 ## Yes that's all well and good, but what does it actually _do_?
 
-- Finds kanban code in your README.md file
-- Parses it up
-- Generates a kanban board of it with HTML/CSS
-- Creates a screenshot of said HTML
-- Saves the image to repo / uploads to imgur (optional)
-- Injects/updates an image link in your README.md
+* Finds kanban code in your README.md file
+* Parses it up
+* Generates a kanban board of it with HTML/CSS
+* Creates a screenshot of said HTML
+* Saves the image to repo / uploads to imgur (optional)
+* Injects/updates an image link in your README.md
 
 ## Extra options
 

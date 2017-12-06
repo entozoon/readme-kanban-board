@@ -73,7 +73,10 @@ const groupItems = items => {
 };
 
 exports.parseKanban = string => {
-  let parse = string.split('\n').map(lineToObject).filter(emptyItems),
+  let parse = string
+      .split('\n')
+      .map(lineToObject)
+      .filter(emptyItems),
     items = parse.filter(item => item.type === 'item'),
     groups = groupItems(items);
   return groups;
@@ -111,6 +114,9 @@ exports.addImageToMarkdown = (url, md) => {
       // Ergh, this is so dodgy..
       if (jam[i - 1].substring(0, 2) == '![') {
         replaceIndex = i - 1;
+      } else if (jam[i - 2].substring(0, 2) == '![') {
+        // Dodgier still, but some editors force a newline between ![ and <!--KA..
+        replaceIndex = i - 2;
       } else {
         line = imageLink + '\n' + line;
       }

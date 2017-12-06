@@ -1,14 +1,21 @@
 # Stuff here
-- to be ignored
 
-![created by readme-kanban-board](http://i.imgur.com/9bkkqBd.png)
+* to be ignored
+
+![created by readme-kanban-board](./kanban.png)
+
 <!---KANBAN
-# Doing
-- This thing
+# To Do
+- Eat healthy food
+- Exercise regularly
+- Learn sign language
+
+# In Progress
+- Drink too much
 
 # Done
-- That thing
-- Another thing
+- Regret my decisions
+- Age too quickly
 KANBAN--->
 
 Ignore this too
