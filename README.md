@@ -38,6 +38,10 @@ Which generates:
 - Age too quickly
 KANBAN--->
 
+## One-time Quick Usage
+
+    npx readme-kanban-board
+
 ## Install
 
     npm i --save-dev readme-kanban-board
@@ -56,17 +60,9 @@ Then fire it up by running:
 
 ## Yes that's all well and good, but what does it actually _do_?
 
-* Finds kanban code in your README.md file
-* Parses it up
-* Generates a kanban board of it with HTML/CSS
-* Creates a screenshot of said HTML
-* Saves the image to repo / uploads to imgur (optional)
-* Injects/updates an image link in your README.md
-
-## Extra options
-
-Add an `imgur` flag if you wish for the generated kanban image to be hosted externally, on imgur:
-
-    "scripts": {
-      "readme-kanban-board": "readme-kanban-board imgur"
-    }
+- Finds kanban code in your README.md file
+- Parses it up
+- Generates a kanban board of it with HTML/CSS
+- Creates a screenshot of said HTML
+- Saves the image to repo
+- Injects/updates an image link in your README.md

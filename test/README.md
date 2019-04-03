@@ -1,6 +1,6 @@
 # Stuff here
 
-* to be ignored
+- to be ignored
 
 ![created by readme-kanban-board](./kanban.png)
 
@@ -8,7 +8,6 @@
 # To Do
 - Eat healthy food
 - Exercise regularly
-- Learn sign language
 
 # In Progress
 - Drink too much

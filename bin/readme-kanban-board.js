@@ -1,9 +1,8 @@
-let imgur = require('imgur'); // https://github.com/kaimallea/node-imgur
-let webshot = require('webshot');
-let fs = require('fs');
-let utils = require('../utils/utils');
+let webshot = require("webshot");
+let fs = require("fs");
+let utils = require("../utils/utils");
 
-console.log(' -- Readme Kanban Board --');
+console.log(" -- Readme Kanban Board --");
 
 // During dev of the module, enable debugging by running with
 //   npm run dev
@@ -11,21 +10,21 @@ console.log(' -- Readme Kanban Board --');
 //   npm run build
 //
 let debugging = false,
-  useModuleReadme = false,
-  useImgur = false;
+  useModuleReadme = false;
 
 // Enable debugging mode if run with `npm run dev`, i.e. `node bin/readme-kanban-board debugging`
 process.argv.forEach(function(value, index, array) {
-  if (value == 'debugging') debugging = true;
-  if (value == 'useModuleReadme') useModuleReadme = true;
-  if (value == 'imgur') useImgur = true;
+  if (value == "debugging") debugging = true;
+  if (value == "useModuleReadme") useModuleReadme = true;
 });
 
-let pathRoot = './',
-  pathModule = debugging ? './' : 'node_modules/readme-kanban-board/',
-  pathGenImage = useImgur ? pathModule + 'gen/kanban.png' : pathRoot + 'kanban.png',
+let pathRoot = "./",
+  pathModule = debugging ? "./" : "node_modules/readme-kanban-board/",
+  pathGenImage = pathRoot + "kanban.png",
   pathReadme =
-    debugging && !useModuleReadme ? pathModule + 'test/README.md' : pathRoot + 'README.md';
+    debugging && !useModuleReadme
+      ? pathModule + "test/README.md"
+      : pathRoot + "README.md";
 
 // fs.readFile function with a legit Promise wrapper
 const getFile = (fileName, type) =>
@@ -36,13 +35,13 @@ const getFile = (fileName, type) =>
   });
 
 // Get all the local files
-let promisedCSS = getFile(pathModule + 'css/style.css', 'utf8');
-let promisedMD = getFile(pathReadme, 'utf8');
+let promisedCSS = getFile(pathModule + "css/style.css", "utf8");
+let promisedMD = getFile(pathReadme, "utf8");
 console.log(pathReadme);
 
 // When they're loaded, crack on with parsing everything
 Promise.all([promisedCSS, promisedMD])
-  .catch(error => console.log('Error (getFile): ', error))
+  .catch(error => console.log("Error (getFile): ", error))
   .then(values => {
     let css = values[0];
     let md = values[1];
@@ -63,7 +62,9 @@ Promise.all([promisedCSS, promisedMD])
     let kanbanParsed = utils.parseKanban(kanban);
 
     if (!Object.keys(kanbanParsed).length) {
-      console.log('Oops, something went wrong trying to parse your kanban markdown!');
+      console.log(
+        "Oops, something went wrong trying to parse your kanban markdown!"
+      );
       return;
     }
 
@@ -76,18 +77,18 @@ Promise.all([promisedCSS, promisedMD])
       kanbanHtml,
       pathGenImage, // image created locally
       {
-        siteType: 'html',
+        siteType: "html",
         customCSS: css,
         screenSize: {
           width: 888,
           height: 10 // Overflows over this! woop!
         },
         shotSize: {
-          width: 'all',
-          height: 'all'
+          width: "all",
+          height: "all"
         },
         quality: 100,
-        streamType: 'png'
+        streamType: "png"
       },
       err => {
         if (debugging) {
@@ -98,34 +99,15 @@ Promise.all([promisedCSS, promisedMD])
           console.log(err);
           return;
         }
-        // Sweet, so the image was created. Let's sploodge it up to imgur
-        if (useImgur) {
-          fs.readFile(pathGenImage, function read(err, data) {
-            console.log('Uploading to imgur..');
-            imgur
-              .uploadFile(pathGenImage)
-              .then(json => {
-                console.log(json.data.link);
-                // Bosh it into the README.md
-                md = utils.addImageToMarkdown(json.data.link, md);
-                fs.writeFile(pathReadme, md);
-                console.log('README.md updated with your kanban image!');
-              })
-              .catch(err => {
-                console.error(err.message);
-              });
-          });
-        } else {
-          // Bosh it into the README.md
-          md = utils.addImageToMarkdown(pathGenImage, md);
-          fs.writeFile(pathReadme, md, (err) => {
-            if (err) {
-              console.log(err);
-              return;
-            }
-            console.log('README.md updated with your kanban image!');
-          });
-        }
+        // Sweet, so the image was created, let's bosh a relativel link into the README.md
+        md = utils.addImageToMarkdown(pathGenImage, md);
+        fs.writeFile(pathReadme, md, err => {
+          if (err) {
+            console.log(err);
+            return;
+          }
+          console.log("README.md updated with your kanban image!");
+        });
       }
     );
   });
