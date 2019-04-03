@@ -38,10 +38,6 @@ Which generates:
 - Age too quickly
 KANBAN--->
 
-## One-time Quick Usage
-
-    npx readme-kanban-board
-
 ## Install
 
     npm i --save-dev readme-kanban-board
