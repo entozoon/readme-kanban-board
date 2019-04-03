@@ -118,8 +118,13 @@ Promise.all([promisedCSS, promisedMD])
         } else {
           // Bosh it into the README.md
           md = utils.addImageToMarkdown(pathGenImage, md);
-          fs.writeFile(pathReadme, md);
-          console.log('README.md updated with your kanban image!');
+          fs.writeFile(pathReadme, md, (err) => {
+            if (err) {
+              console.log(err);
+              return;
+            }
+            console.log('README.md updated with your kanban image!');
+          });
         }
       }
     );
